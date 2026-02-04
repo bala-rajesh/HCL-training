@@ -12,15 +12,15 @@ const SearchBar = ({ onSearch }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '10px', maxWidth: '500px', margin: '0 auto' }}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '1rem', maxWidth: '500px', margin: '0 auto', position: 'relative' }} className="fade-in delay-1">
             <input
                 type="text"
                 className="glass-input"
-                placeholder="Enter city name..."
+                placeholder="Search for a city..."
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
             />
-            <button type="submit" className="glass-btn">
+            <button type="submit" className="glass-btn" style={{ whiteSpace: 'nowrap' }}>
                 Search
             </button>
         </form>
