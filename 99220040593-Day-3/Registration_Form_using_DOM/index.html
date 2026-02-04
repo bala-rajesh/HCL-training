@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <h1>Student Registration</h1>
+                <p>Fill in your details to register</p>
+            </div>
+
+            <form id="registrationForm" novalidate>
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name"
+                        autocomplete="off">
+                    <span class="error-message" id="fullNameError"></span>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" autocomplete="off">
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <!-- Phone -->
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="off">
+                    <span class="error-message" id="phoneError"></span>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="form-group">
+                    <label for="dob">Date of Birth <span class="required">*</span></label>
+                    <input type="date" id="dob" name="dob">
+                    <span class="error-message" id="dobError"></span>
+                </div>
+
+                <!-- Gender -->
+                <div class="form-group">
+                    <label>Gender <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="male" id="genderMale">
+                            <span>Male</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="female" id="genderFemale">
+                            <span>Female</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="other" id="genderOther">
+                            <span>Other</span>
+                        </label>
+                    </div>
+                    <span class="error-message" id="genderError"></span>
+                </div>
+
+                <!-- Course -->
+                <div class="form-group">
+                    <label for="course">Course <span class="required">*</span></label>
+                    <select id="course" name="course">
+                        <option value="">Select a course</option>
+                        <option value="computer-science">Computer Science</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="business">Business Administration</option>
+                        <option value="arts">Arts & Humanities</option>
+                        <option value="science">Natural Sciences</option>
+                        <option value="mathematics">Mathematics</option>
+                    </select>
+                    <span class="error-message" id="courseError"></span>
+                </div>
+
+                <!-- Student ID -->
+                <div class="form-group">
+                    <label for="studentId">Student ID <span class="required">*</span></label>
+                    <input type="text" id="studentId" name="studentId" placeholder="e.g., STU12345" autocomplete="off">
+                    <span class="error-message" id="studentIdError"></span>
+                </div>
+
+                <!-- Address -->
+                <div class="form-group">
+                    <label for="address">Address <span class="required">*</span></label>
+                    <textarea id="address" name="address" rows="3" placeholder="Enter your complete address"></textarea>
+                    <span class="error-message" id="addressError"></span>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password <span class="required">*</span></label>
+                    <input type="password" id="password" name="password" placeholder="Create a strong password">
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+                    <input type="password" id="confirmPassword" name="confirmPassword"
+                        placeholder="Re-enter your password">
+                    <span class="error-message" id="confirmPasswordError"></span>
+                </div>
+
+                <!-- Terms and Conditions -->
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms" name="terms">
+                        <span>I agree to the <a href="#" class="link">Terms and Conditions</a></span>
+                    </label>
+                    <span class="error-message" id="termsError"></span>
+                </div>
+
+                <!-- Buttons -->
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="button" class="btn btn-secondary" id="resetBtn">Reset Form</button>
+                </div>
+            </form>
+
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3>Registration Successful!</h3>
+                <p>Your account has been created successfully.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

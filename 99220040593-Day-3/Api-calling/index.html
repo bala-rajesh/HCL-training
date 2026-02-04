@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Beautiful weather app with real-time weather information powered by Weatherstack API">
+    <title>WeatherPulse - Real-Time Weather Information</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="weather-card">
+            <!-- Header Section -->
+            <div class="header">
+                <h1 class="title">
+                    <span class="icon-pulse">☀️</span>
+                    WeatherPulse
+                </h1>
+                <p class="subtitle">Your real-time weather companion</p>
+            </div>
+
+            <!-- Search Section -->
+            <div class="search-section">
+                <div class="search-container">
+                    <input type="text" id="cityInput" class="search-input" placeholder="Enter city name..."
+                        autocomplete="off">
+                    <button id="searchBtn" class="search-btn">
+                        <span class="search-icon">🔍</span>
+                        Search
+                    </button>
+                </div>
+                <button id="locationBtn" class="location-btn">
+                    <span class="location-icon">📍</span>
+                    Use My Location
+                </button>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state hidden">
+                <div class="spinner"></div>
+                <p>Fetching weather data...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorState" class="error-state hidden">
+                <div class="error-icon">⚠️</div>
+                <p id="errorMessage">Unable to fetch weather data</p>
+                <button id="retryBtn" class="retry-btn">Try Again</button>
+            </div>
+
+            <!-- Weather Display -->
+            <div id="weatherDisplay" class="weather-display hidden">
+                <!-- Location Info -->
+                <div class="location-info">
+                    <h2 id="locationName" class="location-name">--</h2>
+                    <p id="locationRegion" class="location-region">--</p>
+                    <p id="localTime" class="local-time">--</p>
+                </div>
+
+                <!-- Main Weather Info -->
+                <div class="weather-main">
+                    <div class="weather-icon-container">
+                        <img id="weatherIcon" src="" alt="Weather Icon" class="weather-icon">
+                    </div>
+                    <div class="temperature-section">
+                        <div class="temperature-display">
+                            <span id="temperature" class="temperature">--</span>
+                            <span class="temperature-unit">°C</span>
+                        </div>
+                        <p id="weatherDescription" class="weather-description">--</p>
+                    </div>
+                </div>
+
+                <!-- Weather Details Grid -->
+                <div class="weather-details">
+                    <div class="detail-card">
+                        <div class="detail-icon">💨</div>
+                        <div class="detail-content">
+                            <p class="detail-label">Wind Speed</p>
+                            <p id="windSpeed" class="detail-value">-- km/h</p>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-icon">💧</div>
+                        <div class="detail-content">
+                            <p class="detail-label">Humidity</p>
+                            <p id="humidity" class="detail-value">--%</p>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-icon">🌡️</div>
+                        <div class="detail-content">
+                            <p class="detail-label">Feels Like</p>
+                            <p id="feelsLike" class="detail-value">--°C</p>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-icon">👁️</div>
+                        <div class="detail-content">
+                            <p class="detail-label">Visibility</p>
+                            <p id="visibility" class="detail-value">-- km</p>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-icon">🧭</div>
+                        <div class="detail-content">
+                            <p class="detail-label">Wind Direction</p>
+                            <p id="windDirection" class="detail-value">--</p>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-icon">🌀</div>
+                        <div class="detail-content">
+                            <p class="detail-label">Pressure</p>
+                            <p id="pressure" class="detail-value">-- mb</p>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-icon">☁️</div>
+                        <div class="detail-content">
+                            <p class="detail-label">Cloud Cover</p>
+                            <p id="cloudCover" class="detail-value">--%</p>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-icon">☀️</div>
+                        <div class="detail-content">
+                            <p class="detail-label">UV Index</p>
+                            <p id="uvIndex" class="detail-value">--</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by <a href="https://weatherstack.com" target="_blank" rel="noopener">Weatherstack API</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

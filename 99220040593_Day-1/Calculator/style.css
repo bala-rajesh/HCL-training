@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #091921;
+}
+
+.calculator-container {
+    padding: 2px;
+    background: linear-gradient(135deg, #00feba, #5b548a);
+    border-radius: 22px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.calculator {
+    width: 350px;
+    background: #091921;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.5),
+        inset -5px -5px 15px rgba(255, 255, 255, 0.05);
+}
+
+.display-container {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#display {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    text-align: right;
+    padding: 10px 20px;
+    font-size: 2.5em;
+    color: #fff;
+    font-weight: 500;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+button {
+    width: 60px;
+    height: 60px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    font-size: 1.25em;
+    font-weight: 500;
+    background: #232d36;
+    color: #fff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5),
+        -5px -5px 10px rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: 0.2s;
+    user-select: none;
+}
+
+button:active {
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.05);
+    font-size: 1.2em;
+}
+
+/* Specific button styles */
+.btn-operator {
+    color: #00feba;
+}
+
+.btn-action {
+    color: #fb5b53;
+}
+
+.btn-equal {
+    grid-column: span 2;
+    width: 100%;
+    border-radius: 30px;
+    background: #00feba;
+    color: #091921;
+    font-weight: 600;
+}
+
+.btn-equal:hover {
+    background: #00e0a3;
+    box-shadow: 0 0 15px #00feba;
+}
+
+.btn-clear {
+    color: #fb5b53;
+}
+
+.btn-zero {
+    grid-column: span 2;
+    width: 100%;
+    border-radius: 30px;
+    text-align: left;
+    padding-left: 25px;
+    /* Adjust based on alignment preference */
+}
+
+/* Hover effects */
+button:hover:not(.btn-equal) {
+    background: #2d3842;
+}
