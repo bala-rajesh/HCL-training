@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
+import Calculator from './components/Calculator';
 
 function App() {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  // State for view toggle
+  const [view, setView] = useState('weather'); // 'weather' or 'calculator'
 
   // State for API Key management
   const [apiKey, setApiKey] = useState(localStorage.getItem('weatherstack_api_key') || '');
@@ -88,46 +92,104 @@ function App() {
 
   return (
     <div className="App fade-in">
-      <div style={{ position: 'absolute', top: '1.5rem', right: '1.5rem' }}>
+      {/* Top Bar with Reset Key and Toggle */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'flex-end',
+        gap: '1rem',
+        alignItems: 'center',
+        marginBottom: '2rem',
+        width: '100%'
+      }}>
+        <div style={{
+          background: 'rgba(255,255,255,0.1)',
+          borderRadius: '25px',
+          padding: '4px',
+          display: 'flex',
+          border: '1px solid rgba(255,255,255,0.1)'
+        }}>
+          <button
+            onClick={() => setView('weather')}
+            style={{
+              background: view === 'weather' ? 'rgba(255,255,255,0.2)' : 'transparent',
+              color: view === 'weather' ? 'white' : 'rgba(255,255,255,0.5)',
+              border: 'none',
+              borderRadius: '20px',
+              padding: '0.4rem 1rem',
+              cursor: 'pointer',
+              transition: 'all 0.3s',
+              fontSize: '0.85rem',
+              fontWeight: 500
+            }}
+          >
+            Weather
+          </button>
+          <button
+            onClick={() => setView('calculator')}
+            style={{
+              background: view === 'calculator' ? 'rgba(255,255,255,0.2)' : 'transparent',
+              color: view === 'calculator' ? 'white' : 'rgba(255,255,255,0.5)',
+              border: 'none',
+              borderRadius: '20px',
+              padding: '0.4rem 1rem',
+              cursor: 'pointer',
+              transition: 'all 0.3s',
+              fontSize: '0.85rem',
+              fontWeight: 500
+            }}
+          >
+            Calculator
+          </button>
+        </div>
+
         <button
           onClick={clearKey}
           style={{
-            background: 'rgba(255,255,255,0.1)',
-            border: '1px solid rgba(255,255,255,0.2)',
-            color: 'rgba(255,255,255,0.7)',
+            background: 'transparent',
+            border: 'none',
+            color: 'rgba(255,255,255,0.4)',
             cursor: 'pointer',
             fontSize: '0.75rem',
-            padding: '0.4rem 0.8rem',
-            borderRadius: '20px',
-            transition: 'all 0.3s'
+            padding: '0.4rem',
+            transition: 'color 0.3s'
           }}
-          onMouseEnter={(e) => e.target.style.background = 'rgba(255,255,255,0.2)'}
-          onMouseLeave={(e) => e.target.style.background = 'rgba(255,255,255,0.1)'}
+          title="Reset API Key"
         >
           Reset Key
         </button>
       </div>
 
-      <h1 className="fade-in">Weather Forecast</h1>
-      <p className="fade-in delay-1" style={{ marginBottom: '2.5rem', opacity: 0.8, fontSize: '1.2rem' }}>
-        Discover the weather in your city
-      </p>
+      <h1 className="fade-in">
+        {view === 'weather' ? 'Weather Forecast' : 'Calculator'}
+      </h1>
 
-      <SearchBar onSearch={fetchWeather} />
+      {view === 'weather' && (
+        <>
+          <p className="fade-in delay-1" style={{ marginBottom: '2.5rem', opacity: 0.8, fontSize: '1.2rem' }}>
+            Discover the weather in your city
+          </p>
 
-      {loading && (
-        <div style={{ marginTop: '2rem', fontSize: '1.2rem' }}>
-          Loading...
-        </div>
+          <SearchBar onSearch={fetchWeather} />
+
+          {loading && (
+            <div style={{ marginTop: '2rem', fontSize: '1.2rem' }}>
+              Loading...
+            </div>
+          )}
+
+          {error && (
+            <div className="fade-in" style={{ marginTop: '2rem', color: '#ff6b6b', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '8px', display: 'inline-block' }}>
+              {error}
+            </div>
+          )}
+
+          <WeatherCard weather={weather} />
+        </>
       )}
 
-      {error && (
-        <div style={{ marginTop: '2rem', color: '#ff6b6b', background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '8px', display: 'inline-block' }}>
-          {error}
-        </div>
+      {view === 'calculator' && (
+        <Calculator />
       )}
-
-      <WeatherCard weather={weather} />
     </div>
   );
 }
