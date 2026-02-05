@@ -3,6 +3,7 @@ import './App.css';
 import SearchBar from './components/SearchBar';
 import WeatherCard from './components/WeatherCard';
 import Calculator from './components/Calculator';
+import RegistrationForm from './components/RegistrationForm';
 
 function App() {
   const [weather, setWeather] = useState(null);
@@ -140,6 +141,22 @@ function App() {
           >
             Calculator
           </button>
+          <button
+            onClick={() => setView('registration')}
+            style={{
+              background: view === 'registration' ? 'rgba(255,255,255,0.2)' : 'transparent',
+              color: view === 'registration' ? 'white' : 'rgba(255,255,255,0.5)',
+              border: 'none',
+              borderRadius: '20px',
+              padding: '0.4rem 1rem',
+              cursor: 'pointer',
+              transition: 'all 0.3s',
+              fontSize: '0.85rem',
+              fontWeight: 500
+            }}
+          >
+            Registration
+          </button>
         </div>
 
         <button
@@ -160,7 +177,7 @@ function App() {
       </div>
 
       <h1 className="fade-in">
-        {view === 'weather' ? 'Weather Forecast' : 'Calculator'}
+        {view === 'weather' ? 'Weather Forecast' : view === 'calculator' ? 'Calculator' : 'Student Registration'}
       </h1>
 
       {view === 'weather' && (
@@ -189,6 +206,10 @@ function App() {
 
       {view === 'calculator' && (
         <Calculator />
+      )}
+
+      {view === 'registration' && (
+        <RegistrationForm />
       )}
     </div>
   );
